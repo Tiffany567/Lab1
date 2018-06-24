@@ -23,6 +23,7 @@ namespace LabPart1
                     if (length1 == length2)
                     {
                     Console.WriteLine(DigitTotals(number1, number2));
+                    //DigitTotals will check if the corresponding digits summed will equal each other.
                     }
                     else
                     {
@@ -30,6 +31,7 @@ namespace LabPart1
                     }
                 Console.WriteLine("Do you want to run this program again? (Y or N)");
                 doAgain = Convert.ToChar(Console.ReadLine());
+                //Program can run again if the user so chooses. 
                 if (doAgain == 'Y' || doAgain == 'y')
                 {
                     repeat1 = true;
@@ -49,13 +51,11 @@ namespace LabPart1
             var arr2 = y.ToCharArray();
             var intarr2 = arr2.Select(b => int.Parse(b.ToString()));
             var sumint = intarr1.Zip(intarr2, (a, b) => (a + b));
+            //Used Lambda expression to add corresponding digits
             var sumarr = sumint.ToArray();
             int[] numbers = sumarr;
-            for (int i = 0; i < numbers.Length - 1; i++)
-            {
-                for (int j = i + 1; j < numbers.Length; j++)
-                {
-                    if (numbers[i] == numbers[j])
+            if (Array.TrueForAll(numbers, c => c == numbers[0]))
+            //Used Lambda expression to compare each element in numbers to the first element in numbers.
                     {
                         bool results= true;
                         return results;
@@ -66,10 +66,6 @@ namespace LabPart1
                         return results;
 
                     }
-                }
-
-            }
-            return false;
         }
     }
 }
